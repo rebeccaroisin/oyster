@@ -20,6 +20,7 @@ class journey():
 
 
 def parseData(f):
+    # parse data from csv to journey class
     journeys = {}
     with open(f, "r") as datas:
         dataParser = csv.reader(datas)
@@ -44,6 +45,7 @@ def parseData(f):
 
 
 def plotNetwork(journeys):
+    # make graph object
     G = nx.DiGraph()
     for journeyList in journeys.itervalues():
         for journey in journeyList:
@@ -55,6 +57,7 @@ def plotNetwork(journeys):
 
 
 def plotDestinations(journeyList, name):
+    # plot destinations
     G = nx.DiGraph()
     for journey in journeyList:
         if journey.day != "Sat" and journey.day != "Sun":
@@ -66,6 +69,7 @@ def plotDestinations(journeyList, name):
 
 
 def plotHistogram(journeys):
+    # histograms of start times
     for startStation, journeyList in journeys.iteritems():
         journeyTimes = []
         #if startStation == "Oxford Circus":
